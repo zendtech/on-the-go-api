@@ -11,4 +11,9 @@
  * credentials from accidentally being committed into version control.
  */
 
-return array();
+return array(
+    'zend-server' => array(
+        'key' => '',
+        'hash' => '',
+    ),
+);

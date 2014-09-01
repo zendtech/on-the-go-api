@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><package xmlns="http://www.zend.com/server/deployment-descriptor/1.0" version="1.0">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<package xmlns="http://www.zend.com/server/deployment-descriptor/1.0" version="1.0">
     <name>on-the-go-api</name>
     <version>
-        <release>1.0.0</release>
+        <release>0.1</release>
     </version>
     <appdir>data</appdir>
     <docroot>data/public</docroot>
     <scriptsdir>scripts</scriptsdir>
-</package>
+    <parameters>
+        <parameter display="WebAPI Key" id="API_KEY" readonly="false" required="true" type="string"/>
+        <parameter display="WebAPI Hash" id="API_HASH" readonly="false" required="true" type="string"/>
+    </parameters>
+    </package>
