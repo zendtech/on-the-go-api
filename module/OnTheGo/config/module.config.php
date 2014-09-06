@@ -1,19 +1,16 @@
 <?php
 return array(
     'controllers' => array(
-        'factories' => array(
-            'OnTheGo\\V1\\Rpc\\ZsApiCall\\Controller' => 'OnTheGo\\V1\\Rpc\\ZsApiCall\\ZsApiCallControllerFactory',
-        ),
+        'factories' => array(),
     ),
     'router' => array(
         'routes' => array(
-            'on-the-go.rpc.zs-api-call' => array(
+            'on-the-go.rest.monitor-issue' => array(
                 'type' => 'Segment',
                 'options' => array(
-                    'route' => '/zsapicall',
+                    'route' => '/monitor-issues[/:monitor_issue_id]',
                     'defaults' => array(
-                        'controller' => 'OnTheGo\\V1\\Rpc\\ZsApiCall\\Controller',
-                        'action' => 'zsApiCall',
+                        'controller' => 'OnTheGo\\V1\\Rest\\MonitorIssue\\Controller',
                     ),
                 ),
             ),
@@ -21,41 +18,29 @@ return array(
     ),
     'zf-versioning' => array(
         'uri' => array(
-            0 => 'on-the-go.rpc.zs-api-call',
+            1 => 'on-the-go.rest.monitor-issue',
         ),
     ),
-    'zf-rpc' => array(
-        'OnTheGo\\V1\\Rpc\\ZsApiCall\\Controller' => array(
-            'service_name' => 'ZsApiCall',
-            'http_methods' => array(
-                0 => 'POST',
-            ),
-            'route_name' => 'on-the-go.rpc.zs-api-call',
-        ),
-    ),
+    'zf-rpc' => array(),
     'zf-content-negotiation' => array(
         'controllers' => array(
-            'OnTheGo\\V1\\Rpc\\ZsApiCall\\Controller' => 'Json',
+            'OnTheGo\\V1\\Rest\\MonitorIssue\\Controller' => 'HalJson',
         ),
         'accept_whitelist' => array(
-            'OnTheGo\\V1\\Rpc\\ZsApiCall\\Controller' => array(
+            'OnTheGo\\V1\\Rest\\MonitorIssue\\Controller' => array(
                 0 => 'application/vnd.on-the-go.v1+json',
-                1 => 'application/json',
-                2 => 'application/*+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
             ),
         ),
         'content_type_whitelist' => array(
-            'OnTheGo\\V1\\Rpc\\ZsApiCall\\Controller' => array(
+            'OnTheGo\\V1\\Rest\\MonitorIssue\\Controller' => array(
                 0 => 'application/vnd.on-the-go.v1+json',
                 1 => 'application/json',
             ),
         ),
     ),
-    'zf-content-validation' => array(
-        'OnTheGo\\V1\\Rpc\\ZsApiCall\\Controller' => array(
-            'input_filter' => 'OnTheGo\\V1\\Rpc\\ZsApiCall\\Validator',
-        ),
-    ),
+    'zf-content-validation' => array(),
     'input_filter_specs' => array(
         'OnTheGo\\V1\\Rpc\\ZsApiCall\\Validator' => array(
             0 => array(
@@ -82,6 +67,52 @@ return array(
                 'error_message' => 'Please provide with key and values in this format : key1=value1, key2=value2',
                 'allow_empty' => false,
                 'continue_if_empty' => false,
+            ),
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'OnTheGo\\V1\\Rest\\MonitorIssue\\MonitorIssueResource' => 'OnTheGo\\V1\\Rest\\MonitorIssue\\MonitorIssueResourceFactory',
+        ),
+    ),
+    'zf-rest' => array(
+        'OnTheGo\\V1\\Rest\\MonitorIssue\\Controller' => array(
+            'listener' => 'OnTheGo\\V1\\Rest\\MonitorIssue\\MonitorIssueResource',
+            'route_name' => 'on-the-go.rest.monitor-issue',
+            'route_identifier_name' => 'monitor_issue_id',
+            'collection_name' => 'monitor_issues',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_query_whitelist' => array(
+                0 => 'filter',
+                1 => 'sort',
+            ),
+            'page_size' => 2,
+            'page_size_param' => 'limit',
+            'entity_class' => 'OnTheGo\\V1\\Rest\\MonitorIssue\\MonitorIssueEntity',
+            'collection_class' => 'OnTheGo\\V1\\Rest\\MonitorIssue\\MonitorIssueCollection',
+            'service_name' => 'MonitorIssue',
+        ),
+    ),
+    'zf-hal' => array(
+        'metadata_map' => array(
+            'OnTheGo\\V1\\Rest\\MonitorIssue\\MonitorIssueEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'on-the-go.rest.monitor-issue',
+                'route_identifier_name' => 'monitor_issue_id',
+                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
+            ),
+            'OnTheGo\\V1\\Rest\\MonitorIssue\\MonitorIssueCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'on-the-go.rest.monitor-issue',
+                'route_identifier_name' => 'monitor_issue_id',
+                'is_collection' => true,
             ),
         ),
     ),

@@ -58,6 +58,9 @@ return array(
         'aliases' => array(
             'translator' => 'MvcTranslator',
         ),
+        'invokables' => array(
+            'service.webapicall' => 'OnTheGo\Services\WebApiCall',
+        ),
     ),
     'translator' => array(
         'locale' => 'en_US',
