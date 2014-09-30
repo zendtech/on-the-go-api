@@ -8,15 +8,9 @@ return array(
             ),
         ),
     ),
+    'zend-server' => array(
+        'key' => 'demo', // 'KEY_PLACEHOLDER',
+        'hash' => 'd6e5c2b0324b34db6f69e3fce67ecb3d70520dd3a14fe612890248983633aff1', // 'HASH_PLACEHOLDER',
+    ),
 );
-function explodeParams($value) {
-    $params = array();
-    $explodedParams = explode(',', $value);
-    foreach ($explodedParams as $exploded) {
-        $param = explode('=', $exploded);
-        if (count($param) == 2) {
-            $params[$param[0]] = $param[1];
-        }
-    }
-    return $params;
-}
+
