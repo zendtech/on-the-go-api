@@ -43,8 +43,29 @@ if (! $apiHash) {
     exit ( 1 );
 }
 
+$oauth2DbUser = getenv ( "ZS_OAUTH2_DB_USER" );
+if (! $oauth2DbUser) {
+    echo ("ZS_OAUTH2_USER env var undefined");
+    exit ( 1 );
+}
+
+$oauth2DbPassword = getenv ( "ZS_OAUTH2_DB_PASSWORD" );
+if (! $oauth2DbPassword) {
+    echo ("ZS_OAUTH2_DB_PASSWORD env var undefined");
+    exit ( 1 );
+}
+
+$oauth2DbName = getenv ( "ZS_OAUTH2_DB_NAME" );
+if (! $oauth2DbName) {
+    echo ("ZS_OAUTH2_DB_NAME env var undefined");
+    exit ( 1 );
+}
+
 $filePath = getenv ( "ZS_APPLICATION_BASE_DIR" ) . "/config/autoload/global.php";
 $filestr = file_get_contents($filePath);
 $filestr = str_replace("KEY_PLACEHOLDER", $apiKey, $filestr);
 $filestr = str_replace("HASH_PLACEHOLDER", $apiHash, $filestr);
+$filestr = str_replace("OAUTH2_USER_PLACEHOLDER", $oauth2DbUser, $filestr);
+$filestr = str_replace("OAUTH2_PASSWORD_PLACEHOLDER", $oauth2DbPassword, $filestr);
+$filestr = str_replace("OAUTH2_DATABASE_PLACEHOLDER", $oauth2DbName, $filestr);
 file_put_contents($filePath, $filestr);

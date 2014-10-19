@@ -73,7 +73,6 @@ class MonitorIssueResource extends AbstractResourceListener
             }
             $parameters['limit'] = $limit;
         }
-        //$data = $this->getInputFilter()->getValues();
         $response = $this->webapicall->request('monitorGetIssuesByPredefinedFilter', $parameters);
         return $response->responseData->issues;
     }

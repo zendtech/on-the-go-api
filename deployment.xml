@@ -10,5 +10,8 @@
     <parameters>
         <parameter display="WebAPI Key" id="API_KEY" readonly="false" required="true" type="string"/>
         <parameter display="WebAPI Hash" id="API_HASH" readonly="false" required="true" type="string"/>
-    </parameters>
+        <parameter display="OAuth2 Database User" id="OAUTH2_DB_USER" readonly="false" required="true" type="string"/>
+        <parameter display="OAuth2 Database Password" id="OAUTH2_DB_PASSWORD" readonly="false" required="true" type="password"/>
+        <parameter display="OAuth2 Database Name" id="OAUTH2_DB_NAME" readonly="false" required="true" type="string"/>
+        </parameters>
     </package>

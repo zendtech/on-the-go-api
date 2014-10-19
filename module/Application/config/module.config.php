@@ -75,6 +75,7 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Application\Controller\Index' => 'Application\Controller\IndexController',
+            'Application\Controller\Mail' => 'Application\Controller\MailController',
         ),
     ),
     'view_manager' => array(
