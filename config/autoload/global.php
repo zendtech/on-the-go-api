@@ -18,7 +18,7 @@ return array(
         'routes' => array(
             'oauth' => array(
                 'options' => array(
-                    'route' => '/on-the-go-api/oauth',
+                    'route' => '/oauth',
                 ),
             ),
         ),

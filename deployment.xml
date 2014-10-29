@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <package xmlns="http://www.zend.com/server/deployment-descriptor/1.0" version="1.0">
     <name>on-the-go-api</name>
     <version>
@@ -8,10 +8,10 @@
     <docroot>data/public</docroot>
     <scriptsdir>scripts</scriptsdir>
     <parameters>
-        <parameter display="WebAPI Key" id="API_KEY" readonly="false" required="true" type="string"/>
-        <parameter display="WebAPI Hash" id="API_HASH" readonly="false" required="true" type="string"/>
-        <parameter display="OAuth2 Database User" id="OAUTH2_DB_USER" readonly="false" required="true" type="string"/>
-        <parameter display="OAuth2 Database Password" id="OAUTH2_DB_PASSWORD" readonly="false" required="true" type="password"/>
-        <parameter display="OAuth2 Database Name" id="OAUTH2_DB_NAME" readonly="false" required="true" type="string"/>
-        </parameters>
-    </package>
+        <parameter id="API_KEY" display="WebAPI Key" required="true" type="string" readonly="false"/>
+        <parameter id="API_HASH" display="WebAPI Hash" required="true" type="string" readonly="false"/>
+        <parameter id="OAUTH2_DB_USER" display="OAuth2 Database User" required="true" type="string" readonly="false"/>
+        <parameter id="OAUTH2_DB_PASSWORD" display="OAuth2 Database Password" required="true" type="password" readonly="false"/>
+        <parameter id="OAUTH2_DB_NAME" display="OAuth2 Database Name" required="true" type="string" readonly="false"/>
+    </parameters>
+</package>

@@ -2,7 +2,7 @@
 return array(
     'zend-server' => array(
         'key' => 'demo', // 'KEY_PLACEHOLDER',
-        'hash' => 'd6e5c2b0324b34db6f69e3fce67ecb3d70520dd3a14fe612890248983633aff1', // 'HASH_PLACEHOLDER',
+        'hash' => '05e32a36e4a573ec127f6886910bb6928e76405e7a8fbfbe461a5eba3756e66b', // 'HASH_PLACEHOLDER',
     ),
     'zf-oauth2' => array(
         'storage' => 'ZF\\OAuth2\\Adapter\\PdoAdapter',

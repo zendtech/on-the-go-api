@@ -22,7 +22,7 @@ return array(
         'ZF\\Rest',
         'ZF\\Rpc',
         'ZF\\Versioning',
-        17 => 'OnTheGo'
+        'OnTheGo'
     ),
     'module_listener_options' => array(
         'module_paths' => array(
