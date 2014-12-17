@@ -57,6 +57,43 @@ If you have a locally installed Zend Server, Zend Studio will detect it during s
 7. The Key Name and Key Hash fields will be automatically filled.
 8. Click on the Finish button.
 
+Configure Zend Server on AWS in Zend Studio
+-------------------------------------------
+The following steps will configure a Zend Server running on Amazon Web Services for usage in Zend Studio. The steps cover configuration for deployment, automatic uploading of file changes and SSH tunneling for remote debugging.
+
+1. Open the PHP Servers view.
+2. Click on the Add button in the view's toolbar. This will launch the PHP Server Creation wizard.
+3. Select the Remote Zend Server item from the list. Click the Next button.
+4. Give a display name in the Server Name field.
+5. In the Base URL field replace "localhost" with the IP of the AWS instance.
+6. Click on the Next button. This leads to the Configure Zend Server Deployment page.
+7. Select the Enable Zend Deployment checkbox.
+8. Click on the Detect Key Details button.
+9. Enter user name and password in the Zend Server Credentials popup and click OK.
+10. The Key Name and Key Hash fields will be automatically filled.
+11. Click on the Finish button. This leads to the Configure Automatic Upload page.
+12. Click on the Manage button to configure new connection profile. This will open the New Remote System Connection wizard.
+13. Fill the Host Name field with the IP of the AWS instance.
+14. Leave SSH Only in the System Type field.
+15. Click on the Finish button. This will lead to the Remote Connection Profile wizard.
+16. Change the Username field to "ubuntu".
+17. Leave the Password field empty - the authentication with AWS happens using SSH key pairs.
+18. Click on the Test Connection button to check that the connection is configured properly. If the test fails check if any of the private keys configured in Zend Studio (see them in the General > Network Connection > SSH2 preference page) are configured in the AWS account too. 
+19. Click on the Finish button. This will lead back to the Configure Automatic Upload wizard page adn the new connection profile will be selected.
+20. Click on the Next button. This will lead to the Configure SSH Tunneling page.
+21. Select the Enable SSH Tunneling checkbox.
+22. Set the Username field to "ubuntu".
+23. Leave the Password field empty.
+24. Set the SSH Private Key to a key that is configured in the AWS account.
+25. Click on the Add button in the Port Forwarding section to configure the tunneling for remote debugging. This will open the Create Port Forwarding dialog.
+26. Change the Side field to "remote".
+27. Set the "Local Address" field to "127.0.0.1".
+28. Set the "Local Port" field to "10137".
+29. Leave the "Remote Address" field empty.
+30. Set the "Remote Port" field to "10137".
+31. Click on the Finish button. This will lead back to the Configure SSH Tunneling wizard page.
+32. Click on the Finish button to complete the server configuration.
+
 Deploy the application on Zend Server
 -------------------------------------
 1. Right-click on the on-the-go-api project and select Deploy To... from the context menu. This will launch the Deploy PHP Application wizard.
