@@ -9,9 +9,10 @@ Table of Contents
 - [Importing the project in Zend Studio](#importing-the-project-in-zend-studio)
 - [Setting up the OAuth2 database](#setting-up-the-oauth2-database)
 - [Testing the API with Zend Studio](#testing-the-api-with-zend-studio)
-- [Configure locally installed Zend Server in Zend Studio](#configure-locally-installed-zend-server-in-zend-studio)
-- [Configure Zend Server on AWS in Zend Studio](#configure-zend-server-on-aws-in-zend-studio)
-- [Deploy the application on Zend Server](#deploy-the-application-on-zend-server)
+- [Configuring locally installed Zend Server in Zend Studio](#configuring-locally-installed-zend-server-in-zend-studio)
+- [Configuring Zend Server on AWS in Zend Studio](#configuring-zend-server-on-aws-in-zend-studio)
+- [Deploying the application](#deploying-the-application)
+- [Debugging the application](#deploying-the-application)
 
 Importing the project in Zend Studio
 ------------------------------------
@@ -53,7 +54,7 @@ During development time the APIs can be easily tested with the Apigility integra
 12. Click on the Send Request button (the green arrow on the top-right corner).
 13. See the result in the Response area.
 
-Configure locally installed Zend Server in Zend Studio
+Configuring locally installed Zend Server in Zend Studio
 ------------------------------------------------------
 If you have a locally installed Zend Server, Zend Studio will detect it during startup. There is an additional configuration required to enable deployment of applications from Zend Studio to the local Zend Server.
 
@@ -66,7 +67,7 @@ If you have a locally installed Zend Server, Zend Studio will detect it during s
 7. The Key Name and Key Hash fields will be automatically filled.
 8. Click on the Finish button.
 
-Configure Zend Server on AWS in Zend Studio
+Configuring Zend Server on AWS in Zend Studio
 -------------------------------------------
 The following steps will configure a Zend Server running on Amazon Web Services for usage in Zend Studio. The steps cover configuration for deployment, automatic uploading of file changes and SSH tunneling for remote debugging.
 
@@ -103,7 +104,7 @@ The following steps will configure a Zend Server running on Amazon Web Services 
 31. Click on the Finish button. This will lead back to the Configure SSH Tunneling wizard page.
 32. Click on the Finish button to complete the server configuration.
 
-Deploy the application on Zend Server
+Deploying the application on Zend Server
 -------------------------------------
 1. Right-click on the on-the-go-api project and select Deploy To... from the context menu. This will launch the Deploy PHP Application wizard.
 2. Select a server in the "Deploy to" field.
@@ -113,3 +114,42 @@ Deploy the application on Zend Server
 6. Optionally, click on the Export button to save the parameters in a properties file. This file can be imported via the Import button to make further deployments easier.
 7. Click on the Finish button.
 8. Wait for the application to be deployed.
+
+Debugging the application
+-------------------------
+Debugging the PHP code on the server-side after sending a request from the mobile app can be done by enabling the Debug Mode on Zend Server. When in debug mode Zend Server will trigger a debug session for each HTTP request. The debug session will be opened in Zend Studio and mapped to the project files in the workspace.
+
+1. Open the PHP Servers view.
+2. Right-click on the server where the application is deployed and select Start Debug Mode. The debug mode will be started. If there is an SSH tunnel configured for this server, it will be opened too, so remote debugging can work.
+3. Place a breakpoint in a PHP file, e.g. module\OnTheGo\src\OnTheGo\V1\Rest\MonitorIssue\MonitorIssueResource.php, fetchAll(), line 68.
+4. Run the mobile application with CordovaSim.
+5. Switch to the Monitor tab (login if required).
+6. A debug session will be triggered in Zend Studio. Resolve any Path Mapping questions if asked.
+7. The execution will break on the breakpoint.
+
+### Switching of Break at First Line
+
+By default new debug sessions break the execution on the first executable PHP line. This can be annoying in some cases.
+
+To switch this behavior off:
+
+1. Go to Window > Preferences from the main menu.
+2. Go to the PHP > Debug preferences page.
+3. Deselect the Break at First Line checkbox.
+4. Click the OK button. Any running debug mode will be restarted to apply the new setting.
+
+### Performance optimization for Zend Server on AWS
+
+When opening a debug session, Zend Server tries to find Zend Studio in a list of IPs. The list is send from Zend Studio to Zend Server when starting the debug mode. If the list is too long and contains IPs that are not reachable this may significantly delay the opening of the debug session. Usually, this is not a problem when Zend Server is in the same network like Zend Studio, but is problematic when Zend Server is in a cloud like AWS. In the cloud use case remote debugging is usually executing through an SSH tunnel and Zend Server needs to only check the 127.0.0.1 address.
+
+To optimize the IP list:
+
+1. Go to Window > Preferences from the main menu.
+2. Go to the PHP > Debug > Installed Debuggers preferences page.
+3. Select Zend Debugger from the list.
+4. Click the Configure button. This will open the Zend Debugger Settings dialog.
+5. Change the Client Host/IP from Auto to Manual.
+6. Remove all IPs instead of 127.0.0.1 in the text field below.
+7. Click the OK button to close the Zend Debugger Settings dialog.
+8. Click the OK button to close the preferences.
+
