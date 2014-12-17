@@ -14,7 +14,7 @@ Importing the project in Zend Studio
 
 Setting up the OAuth2 database
 ------------------------------
-The REST API provided by the application are protected with OAuth2 authentication. Therefore, you must setup the OAuth2 database before you are able to run the application. The following steps must be executed on the system where the application will be run.
+The REST and RPC APIs provided by the application are protected with OAuth2 authentication. Therefore, you must setup the OAuth2 database before you are able to run the application. The following steps must be executed on the system where the application will be run.
 
 1. Install Zend Server. The application fetches data from Zend Server via the Web API, so you need one installed.
 2. Install MySQL Sever. Required to serve the OAuth2 database.
@@ -23,3 +23,23 @@ The REST API provided by the application are protected with OAuth2 authenticatio
 5. Create the database schema. It's best to execute the SQL script from the ZF-OAuth2 module, e.g. ```SOURCE C:/Users/kaloyan/Zend/workspaces/DefaultWorkspace12/on-the-go-api/vendor/zfcampus/zf-oauth2/data/db_oauth2.sql;```
 6. Add a "demo" user with password "zend" in the "oauth_users" table, i.e. ```INSERT INTO oauth_users VALUES ('demo','$2a$10$DDveLEGuyvfCa58rvDF3Ee4J.jGeUFQ4Vu.Y8yU5G4CFqrmaMjMpi','Demo','User');```. This is the default user and password used by the mobile application. The password must be encrypted with BCrypt.
 7. Add an "on-the-go" client in the "oauth_clients" table, i.e. ```INSERT INTO oauth_clients VALUES ('on-the-go','','/oauth/receivecode','password','','');```
+ 
+Testing the API with Zend Studio
+--------------------------------
+During development time the APIs can be easily tested with the Apigility integration in Zend Studio. This requires local installation of Zend Server and the OAuth2 databases as described above.
+
+1. Configure the config/autoload/local.php file:
+  - Set a valid Web API key and hash in the "zend-server" array
+  - Set the username and password for the local MySQL server if different from the default root/root.
+2. Open the Apigility Editor. Right-click on the on-the-go-api project and select Open Apigility Editor. This will launch the PHP built-in server and open the Apigility Admin UI in an editor in Zend Studio.
+3. Navigate to the OnTheGo API.
+4. Click on the Authorization link.
+5. Disable the authentication for the API methods you want to test. This will make testing much easier.
+6. Save the configuration.
+7. Click on the Overview link.
+8. Click on the service you want to test, e.g. MonitorIssues.
+9. Click the orange "Test service" button in the service header (you must hover on the header to see it).
+10. The Test Service view will open pre-configured for testing the service.
+11. Optionally, configure HTTP methods, parameters and headers.
+12. Click on the Send Request button (the green arrow on the top-right corner).
+13. See the result in the Response area.
