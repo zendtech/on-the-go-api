@@ -1,96 +1,13 @@
-Apigility Skeleton Application
-==============================
+Zend On The Go API
+==================
+Zend On The Go is a sample mobile application designed to show developers how to create mobile applications on top of existing PHP back-ends. The application uses HTML5/CSS/JS on the client side and Zend Framework + Apigility with Zend Server on the back-end. The application itself monitors your application and gives you live statistics on your server performance.
 
-Installation
-------------
+This repository contains the source code of the server-side API part of the application. The source code of the mobile part of the application is available in the [zendtech/on-the-go-mobile](https://github.com/zendtech/on-the-go-mobile) repository.
 
-### Via release tarball
-
-Grab the latest release via the [Apigility website](http://apigility.org/)
-and/or the [releases page](https://github.com/zfcampus/zf-apigility-skeleton/releases).
-At the time of this writing, that URI is:
-
-- https://github.com/zfcampus/zf-apigility-skeleton/releases/download/0.9.1/zf-apigility-skeleton-0.9.1.tgz
-
-Untar it:
-
-```bash
-tar xzf zf-apigility-skeleton-0.9.1.tgz
-```
-
-### Via Composer (create-project)
-
-You can use the `create-project` command from [Composer](http://getcomposer.org/)
-to create the project in one go:
-
-```bash
-curl -s https://getcomposer.org/installer | php --
-php composer.phar create-project -sdev zfcampus/zf-apigility-skeleton path/to/install
-```
-
-### Via Git (clone)
-
-First, clone the repository:
-
-```bash
-git clone https://github.com/zfcampus/zf-apigility-skeleton.git # optionally, specify the directory in which to clone
-cd path/to/install
-```
-
-At this point, you need to use [Composer](https://getcomposer.org/) to install
-dependencies. Assuming you already have Composer:
-
-```bash
-composer.phar install
-```
-
-### All methods
-
-Once you have the basic installation, you need to put it in development mode:
-
-```bash
-cd path/to/install
-php public/index.php development enable # put the skeleton in development mode
-```
-
-Now, fire it up! Do one of the following:
-
-- Create a vhost in your web server that points the DocumentRoot to the
-  `public/` directory of the project
-- Fire up the built-in web server in PHP (5.4.8+) (**note**: do not use this for
-  production!)
-
-In the latter case, do the following:
-
-```bash
-cd path/to/install
-php -S 0.0.0.0:8080 -t public public/index.php
-```
-
-You can then visit the site at http://localhost:8080/ - which will bring up a
-welcome page and the ability to visit the dashboard in order to create and
-inspect your APIs.
-
-### NOTE ABOUT USING THE PHP BUILT-IN WEB SERVER
-
-PHP's built-in web server did not start supporting the `PATCH` HTTP method until
-5.4.8. Since the admin API makes use of this HTTP method, you must use a version
-&gt;= 5.4.8 when using the built-in web server.
-
-### NOTE ABOUT OPCACHE
-
-**Disable all opcode caches when running the admin!**
-
-The admin cannot and will not run correctly when an opcode cache, such as APC or
-OpCache, is enabled. Apigility does not use a database to store configuration;
-instead, it uses PHP configuration files. Opcode caches will cache these files
-on first load, leading to inconsistencies as you write to them, and will
-typically lead to a state where the admin API and code become unusable.
-
-The admin is a **development** tool, and intended for use a development
-environment. As such, you should likely disable opcode caching, regardless.
-
-When you are ready to deploy your API to **production**, however, you can
-disable development mode, thus disabling the admin interface, and safely run an
-opcode cache again. Doing so is recommended for production due to the tremendous
-performance benefits opcode caches provide.
+Importing the project in Zend Studio
+------------------------------------
+1. Switch to the PHP perspective, if not already there.
+2. Call File > New > PHP Project from GitHub from the main menu.
+3. Paste the Git repository URL in the URI field: https://github.com/zendtech/on-the-go-mobile.git (this URL will be different if you have forked the repository)
+4. All other fields will be automatically filled. Click the Finish button.
+5. You will find the on-the-go-api project in the PHP Explorer view.
