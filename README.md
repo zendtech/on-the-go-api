@@ -43,3 +43,27 @@ During development time the APIs can be easily tested with the Apigility integra
 11. Optionally, configure HTTP methods, parameters and headers.
 12. Click on the Send Request button (the green arrow on the top-right corner).
 13. See the result in the Response area.
+
+Configure locally installed Zend Server in Zend Studio
+------------------------------------------------------
+If you have a locally installed Zend Server, Zend Studio will detect it during startup. There is an additional configuration required to enable deployment of applications from Zend Studio to the local Zend Server.
+
+1. Open the PHP Servers view. There should be a Local Zend Server item already available there. R
+2. Right-click on the Local Zend Server and select Edit from the context menu. This opens the Edit Server wizard.
+3. Switch to the Deployment tab.
+4. Select the Enable Zend Deployment checkbox.
+5. Click on the Detect Key Details button.
+6. Enter user name and password in the Zend Server Credentials popup and click OK.
+7. The Key Name and Key Hash fields will be automatically filled.
+8. Click on the Finish button.
+
+Deploy the application on Zend Server
+-------------------------------------
+1. Right-click on the on-the-go-api project and select Deploy To... from the context menu. This will launch the Deploy PHP Application wizard.
+2. Select a server in the "Deploy to" field.
+3. Optionally, configure the Application URL and Application Name fields.
+4. Click on the Next button.
+5. Fill the parameters for Web API key and hash, and OAuth2 database user, password and db name. These parameters will be filled in the config/autoload/global.php file of the deployed application.
+6. Optionally, click on the Export button to save the parameters in a properties file. This file can be imported via the Import button to make further deployments easier.
+7. Click on the Finish button.
+8. Wait for the application to be deployed.
