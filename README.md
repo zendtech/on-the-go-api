@@ -12,7 +12,7 @@ Table of Contents
 - [Configuring locally installed Zend Server in Zend Studio](#configuring-locally-installed-zend-server-in-zend-studio)
 - [Configuring Zend Server on AWS in Zend Studio](#configuring-zend-server-on-aws-in-zend-studio)
 - [Deploying the application](#deploying-the-application)
-- [Debugging the application](#deploying-the-application)
+- [Debugging the application](#debugging-the-application)
 
 Importing the project in Zend Studio
 ------------------------------------
@@ -104,7 +104,7 @@ The following steps will configure a Zend Server running on Amazon Web Services 
 31. Click on the Finish button. This will lead back to the Configure SSH Tunneling wizard page.
 32. Click on the Finish button to complete the server configuration.
 
-Deploying the application on Zend Server
+Deploying the application
 -------------------------------------
 1. Right-click on the on-the-go-api project and select Deploy To... from the context menu. This will launch the Deploy PHP Application wizard.
 2. Select a server in the "Deploy to" field.
