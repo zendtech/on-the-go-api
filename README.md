@@ -4,6 +4,15 @@ Zend On The Go is a sample mobile application designed to show developers how to
 
 This repository contains the source code of the server-side API part of the application. The source code of the mobile part of the application is available in the [zendtech/on-the-go-mobile](https://github.com/zendtech/on-the-go-mobile) repository.
 
+Table of Contents
+-----------------
+- [Importing the project in Zend Studio](#importing-the-project-in-zend-studio)
+- [Setting up the OAuth2 database](#setting-up-the-oauth2-database)
+- [Testing the API with Zend Studio](#testing-the-api-with-zend-studio)
+- [Configure locally installed Zend Server in Zend Studio](#configure-locally-installed-zend-server-in-zend-studio)
+- [Configure Zend Server on AWS in Zend Studio](#configure-zend-server-on-aws-in-zend-studio)
+- [Deploy the application on Zend Server](#deploy-the-application-on-zend-server)
+
 Importing the project in Zend Studio
 ------------------------------------
 1. Switch to the PHP perspective, if not already there.
